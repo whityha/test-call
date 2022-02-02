@@ -10,6 +10,8 @@ import CallList from './app-call-list/app-call-list.js';
 import AverageCallsTime from './app-sum-calls/app-average-calls.js'
 import SumCallsTime from './app-sum-calls/app-sum-calls.js'
 
+
+//Весь код ниже до компонента App для осуществления вызова
 let localStream;
 let pc1;
 let pc2;
@@ -99,8 +101,8 @@ function hangup() {
 }
 
 
-let newObj = {};
-export default class App extends Component {
+let newObj = {}; // Объект для содержания в себе начала трансляции, конца трансляции и продолжительности.
+export default class App extends Component { //основной компонент приложения
   constructor(props) {
     super();  
     this.deleteItem = this.deleteItem.bind(this)
@@ -115,12 +117,13 @@ export default class App extends Component {
     }
   }
   
-  addStartCallTime() {    
+  addStartCallTime() {    //метод для добавления в объект информации о начале трансляции
     const startTime = new Date();
     newObj.startTime = startTime;
   }
 
-  addEndCallTime() {
+  addEndCallTime() { //метод для добавления в объект инфы об окончании трансляции и ее продолжительности, а так же для добавления/переназначения id каждому объекту.
+                    // а так же этот метод заменяет массив с объектами вызовов на новый, с только что законченым звонком, тем самым обновляя его.
     this.setState(({arrayWithTimeCalls}) => {
       newObj.endTime = new Date();
       const duration = newObj.endTime - newObj.startTime;
@@ -138,7 +141,7 @@ export default class App extends Component {
     })
   }
   
-  deleteItem(id) {
+  deleteItem(id) { //метод для удаления строки списка истории вызовов.
     this.setState(({arrayWithTimeCalls}) => {
       const index = arrayWithTimeCalls.findIndex(elem => elem.id === id)
 
@@ -156,7 +159,7 @@ export default class App extends Component {
     })
   }
 
-  toCountAverageTime() {
+  toCountAverageTime() {  //метод для подсчета среднего времени продолжительности звонка
     this.setState(({averageTime, arrayWithTimeCalls}) => {
       const arrayWithTimeDuration = arrayWithTimeCalls.map(item => item.duration);
       let sumTime = 0;
@@ -180,7 +183,7 @@ export default class App extends Component {
     })
   }
 
-  toCountSumTime() {
+  toCountSumTime() { //метод для подсчета суммы всех вызовов
     this.setState(({arrayWithTimeCalls}) => {
       const arrayWithTimeDuration = arrayWithTimeCalls.map(item => item.duration);
       let sumTime = 0;
@@ -205,20 +208,22 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className='sumCalls'>
-          <SumCallsTime sumTime = {this.state.sumTime}/>
-          <AverageCallsTime averageTime = {this.state.averageTime} />
+          <SumCallsTime sumTime = {this.state.sumTime}/> {/* передаем в компонент сумму времени разговора всех вызовов */}
+          <AverageCallsTime averageTime = {this.state.averageTime} /> {/* передаем в компонент среднее время разговора всех вызовов */}
         </div>
         <div className="App-container">
-          <AppVideoPc1 />
-          <AppVideoPc2 />
+          <AppVideoPc1 /> {/* получилось немного бесполезно, но это так, на будущее))) */}
+          <AppVideoPc2 /> {/* такая же фигня */}
         </div>
         <div className="buttons">
-          <BtnStart start={start}/>
-          <BtnCall startCall= {this.addStartCallTime} call={call}/>
+          <BtnStart start={start}/> {/* запускаем функцию старта трансляции */}
+          <BtnCall startCall= {this.addStartCallTime} call={call}/> {/* начианем считать время + соединяемся с PC2 */}
           <BtnClose averageTime = {this.toCountAverageTime} endCall={this.addEndCallTime} close = {hangup} onSumTime = {this.toCountSumTime}/>
+          {/* после завершения вызова записываем в список, считаем среднее время, сумму,  */}
         </div>
         <div className='callsList'>
           <CallList list = {this.state.arrayWithTimeCalls} onDelete={this.deleteItem} averageTime={this.toCountAverageTime} onSumTime = {this.toCountSumTime}/>
+          {/* После удаления из списка и из массива - пересчитываем среднюю продолжительнось, общую сумму, */}
         </div>
         
     </div>
