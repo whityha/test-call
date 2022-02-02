@@ -1,0 +1,53 @@
+*
+    list-style-type: none
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+    
+.App 
+    text-align: center;
+    background-color: #282c34
+    min-height: 100vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    font-size: calc(10px + 2vmin)
+    color: white
+    &-container
+        width: 80%
+        min-height: 100px        
+        margin-top: 100px
+        display: flex
+        justify-content: space-between
+        video
+            display: block
+            width: 40%
+            border: 1px solid white
+    .buttons
+        width: 80%
+        min-height: 50px
+        margin-top: 40px
+        display: flex
+        justify-content: space-around
+        .btnStart,.btnCall,.btnClose
+            cursor: pointer
+            padding: 10px
+        .btnStart  
+            background: #91bb75          
+        .btnCall
+            border-radius: 50%
+            width: 50px
+            height: 50px
+        .btnClose
+            border-radius: 50%
+            width: 150px
+            height: 50px
+    .callsList
+        margin-top: 100px
+        border: 1px solid white
+        width: 80%
+        min-height: 50px
+
+
+
