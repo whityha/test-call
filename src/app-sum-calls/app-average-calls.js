@@ -8,7 +8,7 @@ class AverageCallsTime extends Component {
       const {averageTime} = this.props
         return (
             <div className='average'>
-                <p>Среднее количество времени разговора: {averageTime} секунд</p>
+                <p>Среднее время всех звонков: {averageTime} секунд</p>
             </div>
         )
     };    

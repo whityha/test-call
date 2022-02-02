@@ -8,7 +8,7 @@ class SumCallsTime extends Component {
       const {sumTime} = this.props
         return (
             <div className='sum'>
-              <p>Сумма всего времени разговора: {sumTime} секунд</p>
+              <p>Сумма продолжительностей всех звонков: {sumTime} секунд</p>
             </div>
         )
     };    
