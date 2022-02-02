@@ -6,10 +6,11 @@ class CallItem extends Component {
     }
     
     render() { 
-        const {text} = this.props;   
+        const {averageTime, onSumTime, duration, start, end, onDelete, i} = this.props;   
+       
       return (
         <li>
-            НУ СМОТРИ ЖЕ {text}
+            <span> {i+1}. Начало трансляции {start.toString()}</span> <span>Конец в {end.toString()}.</span> <span>Продолжительность {duration} секунд.</span> <button onClick={() => {onDelete(); averageTime(); onSumTime();}}>УДАЛИТЬ</button>
         </li>
       )
     };    

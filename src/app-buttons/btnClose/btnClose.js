@@ -5,9 +5,9 @@ class BtnClose extends Component {
       super();
     }
     render() {
-      const {close} = this.props
+      const {onSumTime, close, endCall, averageTime} = this.props
       return (
-          <button onClick={close} className='btnClose' type='button'>HandsUp</button>
+          <button onClick={() => {close(); endCall(); averageTime(); onSumTime();}} className='btnClose' type='button'></button>
       )
     
     }  

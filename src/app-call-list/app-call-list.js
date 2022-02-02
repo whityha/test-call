@@ -7,10 +7,10 @@ class CallList extends Component {
     }
     
     render() {
-        let {list} = this.props 
-        list = list.map(item => {
+        let {onSumTime, averageTime, list, onDelete} = this.props 
+        list = list.map((item, i) => {
             return (
-                <CallItem key={item.id} text={item.duration}/>
+                <CallItem onSumTime = {onSumTime} averageTime = {averageTime} onDelete={() => onDelete(item.id)} duration={item.duration} end={item.endTime} key={i} i={i} id={item.id} start={item.startTime}/>
             )
         })
       return (

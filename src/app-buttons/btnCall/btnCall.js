@@ -5,9 +5,9 @@ class BtnCall extends Component {
       super();
     }
     render() {
-      const {call} = this.props
+      const {call, startCall} = this.props
       return (
-          <button onClick={call} className='btnCall' type='button'>Call</button>
+          <button onClick={() => {call(); startCall()}} className='btnCall' type='button'></button>
       )
     
     }  
