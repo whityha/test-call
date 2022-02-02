@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/test-call/static/css/main.e70e6a21.css",
+    "main.js": "/test-call/static/js/main.12ba8bfa.js",
+    "static/media/phone.svg": "/test-call/static/media/phone.efe847781186d6372131.svg",
+    "index.html": "/test-call/index.html",
+    "main.e70e6a21.css.map": "/test-call/static/css/main.e70e6a21.css.map",
+    "main.12ba8bfa.js.map": "/test-call/static/js/main.12ba8bfa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e70e6a21.css",
+    "static/js/main.12ba8bfa.js"
+  ]
+}
