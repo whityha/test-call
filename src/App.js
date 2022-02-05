@@ -100,6 +100,12 @@ function hangup() {
   remoteVideo.srcObject = null
 }
 
+setTimeout(() => {
+  document.querySelector('.btnCall').disabled = true;
+  document.querySelector('.btnClose').disabled = true;      
+}, 50);
+  
+
 
 let newObj = {}; // Объект для содержания в себе начала трансляции, конца трансляции и продолжительности.
 export default class App extends Component { //основной компонент приложения
@@ -213,22 +219,41 @@ export default class App extends Component { //основной компонен
         </div>
         <div className="App-container">
           <AppVideoPc1 /> {/* получилось немного бесполезно, но это так, на будущее))) */}
+          <div className='animCall'>
+            <ul className='rounds-s'>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
           <AppVideoPc2 /> {/* такая же фигня */}
         </div>
         <div className="buttons">
           <BtnStart start={start}/> {/* запускаем функцию старта трансляции */}
-          <BtnCall startCall= {this.addStartCallTime} call={call}/> {/* начианем считать время + соединяемся с PC2 */}
-          <BtnClose averageTime = {this.toCountAverageTime} endCall={this.addEndCallTime} close = {hangup} onSumTime = {this.toCountSumTime}/>
+          <BtnCall 
+          startCall= {this.addStartCallTime} 
+          call={call}
+          /> {/* начианем считать время + соединяемся с PC2 */}
+          <BtnClose 
+          averageTime = {this.toCountAverageTime} 
+          endCall={this.addEndCallTime} 
+          close = {hangup} 
+          onSumTime = {this.toCountSumTime}
+          />
           {/* после завершения вызова записываем в список, считаем среднее время, сумму,  */}
         </div>
         <div className='callsList'>
-          <CallList list = {this.state.arrayWithTimeCalls} onDelete={this.deleteItem} averageTime={this.toCountAverageTime} onSumTime = {this.toCountSumTime}/>
+          <CallList 
+          list = {this.state.arrayWithTimeCalls} 
+          onDelete={this.deleteItem} 
+          averageTime={this.toCountAverageTime} 
+          onSumTime = {this.toCountSumTime}
+          />
           {/* После удаления из списка и из массива - пересчитываем среднюю продолжительнось, общую сумму, */}
-        </div>
-        
+        </div>   
     </div>
+    
     )
   };    
   
 }
-

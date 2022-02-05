@@ -3,7 +3,9 @@
     box-sizing: border-box
     padding: 0
     margin: 0
-    
+
+.flex-block
+    display: flex !important
 .App 
     text-align: center;
     background-color: #282c34
@@ -20,6 +22,29 @@
         margin-top: 100px
         display: flex
         justify-content: space-between
+        .animCall
+            width: 20%
+            height: 50px
+            align-self: center
+            display: flex
+            justify-content: center
+            align-items: center
+            .rounds-s
+                display: none
+                width: 70%
+                justify-content: space-between
+                li
+                    height: 30px
+                    width: 30px
+                    background-color: #7c7c7c
+                    border-radius: 50%                    
+                    &:nth-child(1)
+                        animation: rounds .9s ease 0s infinite 
+                    &:nth-child(2)
+                        animation: rounds .9s ease 0.1s infinite 
+                    &:nth-child(3)
+                        animation: rounds .9s ease 0.2s infinite 
+                        
         video
             display: block
             width: 40%
@@ -33,6 +58,9 @@
         .btnStart,.btnCall,.btnClose
             cursor: pointer
             padding: 10px
+            &:disabled
+                opacity: .4
+                
         .btnStart  
             background: #91bb75          
         .btnCall
@@ -43,7 +71,7 @@
             background-color: #818d57
             border: none
             transition: .3s
-            &:hover
+            &:hover:not(:disabled)
                 background-color: #528864
         .btnClose
             border-radius: 50%
@@ -81,3 +109,10 @@
 
 
 
+@keyframes rounds
+    0%
+        transform: scale(1)
+    50%
+        transform: scale(0.5)
+    100%
+        transform: scale(1)
