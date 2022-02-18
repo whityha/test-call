@@ -11,3 +11,4 @@ React
 Eslint (конфиг Airbnb)
 SCSS/SASS (на свое усмотрение)
 
+deploy - https://whityha.github.io/test-call/
